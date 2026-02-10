@@ -1,0 +1,4 @@
+Allows Voters to register.
+Users give their college email id and a password
+After verification a multifactor authentication is required to register
+The voters need to submit the email, password, and authentication code during the time of voting
