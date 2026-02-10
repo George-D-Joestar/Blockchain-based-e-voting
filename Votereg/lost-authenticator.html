@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost Authenticator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Lost Authenticator</h1>
+
+    <p>
+        Enter your registered email and password to continue.
+    </p>
+
+    <p id="laError" style="color:red;"></p>
+
+    <form id="lostAuthForm" novalidate>
+        <label>Email:</label><br>
+        <input type="email"
+               id="laEmail"
+               name="email"
+               autocomplete="email"><br><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="laPassword"><br><br>
+
+        <button type="submit">Next</button>
+    </form>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

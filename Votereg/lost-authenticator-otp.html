@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Email Verification</h1>
+
+    <p>
+        An OTP has been sent to your registered email address.
+    </p>
+
+    <p id="laOtpError" style="color:red;"></p>
+
+    <form id="laOtpForm" novalidate>
+        <label>Enter OTP:</label><br>
+        <input type="text" id="laOtp" maxlength="6"><br><br>
+
+        <button type="submit">Verify</button>
+    </form>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

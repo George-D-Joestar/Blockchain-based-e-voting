@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>Email Verification</h1>
+
+    <p id="emailDisplay"></p>
+    <p>An OTP has been sent to your college email.</p>
+
+    <p id="otpError" style="color:red;"></p>
+
+    <form id="otpForm" novalidate>
+        <label>Enter OTP:</label><br>
+        <input type="text" id="otp" maxlength="6"><br><br>
+
+        <button type="submit">Verify Email</button>
+    </form>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
