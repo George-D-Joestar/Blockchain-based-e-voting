@@ -1,0 +1,108 @@
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, #0b1b35, #081429);
+  color: white;
+}
+
+/* Page Layout */
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Card */
+
+.card {
+  background: rgba(255,255,255,0.04);
+  padding: 40px;
+  border-radius: 12px;
+  width: 420px;
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+/* Title */
+
+.hero-title {
+  font-size: 38px;
+  font-weight: 600;
+  color: #60a5fa;
+  margin-bottom: 15px;
+}
+
+/* Subtitle */
+
+.hero-subtitle {
+  font-size: 18px;
+  color: #d1d5db;
+  margin-bottom: 30px;
+}
+
+/* Inputs */
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  border: none;
+  background: #0f2447;
+  color: white;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #3b82f6;
+}
+
+/* Button */
+
+.primary-btn {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.25s ease;
+  margin-top: 20px;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Candidate Options */
+
+.candidate-option {
+  background: #0f2447;
+  padding: 14px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.candidate-option:hover {
+  background: #16346a;
+}

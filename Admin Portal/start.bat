@@ -1,0 +1,3 @@
+@echo off
+echo Starting Admin Backend...
+start cmd /k "cd /d "C:\Users\georg\OneDrive\Desktop\Miniproject\Admin Portal\Backend" && node server.js"

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal – E-Voting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════════════ LOGIN ══════════════════ -->
+<div id="loginScreen">
+    <div class="login-box">
+        <div class="login-logo">// E-Voting System</div>
+        <div class="login-title">Admin Portal</div>
+        <div class="login-sub">Restricted access. Authorised personnel only.</div>
+
+        <label class="field-label">Username</label>
+        <input class="field-input" type="text" id="loginUser" autocomplete="off" placeholder="admin">
+
+        <label class="field-label">Password</label>
+        <input class="field-input" type="password" id="loginPass" placeholder="••••••••">
+
+        <button class="btn-primary" onclick="doLogin()">[ AUTHENTICATE ]</button>
+        <div class="login-error" id="loginError">⚠ Invalid credentials</div>
+    </div>
+</div>
+
+<!-- ══════════════════ DASHBOARD ══════════════════ -->
+<div id="dashboard">
+
+    <div class="header">
+        <div class="header-left">
+            <span class="header-logo">// ADMIN</span>
+            <span class="header-title">Election Control Panel</span>
+            <span class="voting-badge badge-inactive" id="headerBadge">● VOTING INACTIVE</span>
+        </div>
+        <button class="btn-logout" onclick="doLogout()">Logout</button>
+    </div>
+
+    <div class="main">
+
+        <!-- CARD 1: Add Candidate -->
+        <div class="card">
+            <div class="card-tag">Candidate Management</div>
+            <div class="card-title">Add Candidate</div>
+            <label class="field-label">Candidate Name</label>
+            <input class="field-input" type="text" id="addName" placeholder="Enter full name">
+            <button class="btn-action btn-cyan" onclick="addCandidate()">+ Add Candidate</button>
+            <div class="response-msg" id="addMsg"></div>
+        </div>
+
+        <!-- CARD 2: Remove Candidate -->
+        <div class="card danger">
+            <div class="card-tag">Candidate Management</div>
+            <div class="card-title">Remove Candidate</div>
+            <label class="field-label">Candidate ID</label>
+            <input class="field-input" type="number" id="removeId" placeholder="e.g. 1">
+            <button class="btn-action btn-red" onclick="removeCandidate()">Remove Candidate</button>
+            <div class="response-msg" id="removeMsg"></div>
+        </div>
+
+        <!-- CARD 3: Voting Control -->
+        <div class="card wide">
+            <div class="card-tag">Election Control</div>
+            <div class="card-title">Voting Status</div>
+            <div class="voting-control-row">
+                <span class="status-label" id="statusText">Status: checking...</span>
+                <button class="btn-action btn-green" onclick="startVoting()">▶ Start Voting</button>
+                <button class="btn-action btn-red" onclick="endVoting()">■ End Voting</button>
+            </div>
+            <div class="response-msg" id="votingMsg"></div>
+        </div>
+
+        <!-- CARD 4: Candidates Table -->
+        <div class="card wide">
+            <div class="card-tag">Live Data</div>
+            <div class="card-title">Candidate List
+                <button class="btn-action btn-outline" style="font-size:10px; padding:6px 14px; margin-left:14px;" onclick="loadCandidates()">↻ Refresh</button>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Votes</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="candidateTableBody">
+                        <tr><td colspan="4" class="empty-table">Click Refresh to load candidates</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
