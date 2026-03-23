@@ -11,37 +11,36 @@ function Register() {
 
   const ALLOWED_DOMAIN = "@mgits.ac.in";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
   e.preventDefault();
   setError("");
-
-  if (!email) {
-    setError("Email field cannot be empty.");
-    return;
-  }
 
   if (!email.toLowerCase().endsWith("@mgits.ac.in")) {
     setError("Please use your official MGITS email address.");
     return;
   }
-
-  if (!password) {
-    setError("Password field cannot be empty.");
-    return;
-  }
-
   if (password.length < 8) {
     setError("Password must be at least 8 characters long.");
     return;
   }
-
   if (password !== confirmPassword) {
     setError("Passwords do not match.");
     return;
   }
 
-  sessionStorage.setItem("registerEmail", email);
-  navigate("/verify-email");
+  try {
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await res.json();
+    if (!res.ok) { setError(data.message); return; }
+    sessionStorage.setItem("registerEmail", email);
+    navigate("/verify-email");
+  } catch {
+    setError("Could not reach the server.");
+  }
 };
 
   return (

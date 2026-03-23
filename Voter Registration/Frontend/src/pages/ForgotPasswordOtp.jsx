@@ -6,17 +6,13 @@ function ForgotPasswordOtp() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-
-    if (!/^\d{6}$/.test(otp)) {
-      setError("OTP must be a 6-digit number.");
-      return;
-    }
-
-    navigate("/reset-password");
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  if (!/^\d{6}$/.test(otp)) { setError("OTP must be 6 digits."); return; }
+  sessionStorage.setItem("fpOtp", otp);
+  navigate("/reset-password");
+};
 
   return (
     <div className="page-container">

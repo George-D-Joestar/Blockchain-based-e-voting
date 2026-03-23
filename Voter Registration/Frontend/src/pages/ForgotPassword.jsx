@@ -6,18 +6,23 @@ function ForgotPassword() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
-
-    if (!email.endsWith("@mgits.ac.in")) {
-      setError("Please use your registered MGITS email address.");
-      return;
-    }
-
-    sessionStorage.setItem("fpEmail", email);
-    navigate("/forgot-password-otp");
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  if (!email.endsWith("@mgits.ac.in")) {
+    setError("Please use your registered MGITS email.");
+    return;
+  }
+  const res = await fetch("/api/forgot-password", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email })
+  });
+  const data = await res.json();
+  if (!res.ok) { setError(data.message); return; }
+  sessionStorage.setItem("fpEmail", email);
+  navigate("/forgot-password-otp");
+};
 
   return (
     <div className="page-container">

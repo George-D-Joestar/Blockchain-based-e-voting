@@ -8,22 +8,24 @@ function ResetPassword() {
   const [showSuccess, setShowSuccess] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  if (password.length < 8) { setError("Password must be at least 8 characters."); return; }
+  if (password !== confirm) { setError("Passwords do not match."); return; }
 
-    if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
-      return;
-    }
+  const email = sessionStorage.getItem("fpEmail");
+  const otp = sessionStorage.getItem("fpOtp");
 
-    if (password !== confirm) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    setShowSuccess(true);
-  };
+  const res = await fetch("/api/reset-password", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, otp, newPassword: password })
+  });
+  const data = await res.json();
+  if (!res.ok) { setError(data.message); return; }
+  setShowSuccess(true);
+};
 
   const handleSuccess = () => {
     sessionStorage.clear();

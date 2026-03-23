@@ -16,20 +16,28 @@ function VerifyEmail() {
     }
   }, [navigate]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError("");
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
 
-    if (!/^\d{6}$/.test(otp)) {
-      setError("OTP must be a 6-digit number.");
-      return;
-    }
+  if (!/^\d{6}$/.test(otp)) {
+    setError("OTP must be a 6-digit number.");
+    return;
+  }
 
-    // Backend responsibility:
-    // - Verify OTP from server
-
+  try {
+    const res = await fetch("/api/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, otp })
+    });
+    const data = await res.json();
+    if (!res.ok) { setError(data.message); return; }
     navigate("/authenticator");
-  };
+  } catch {
+    setError("Could not reach the server.");
+  }
+};
 
   return (
     <div className="page-container">
