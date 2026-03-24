@@ -1,7 +1,0 @@
-POST http://localhost:5000/api/logincd server
-Content-Type: application/json
-
-{
-    "student_id": "S001",
-    "password": "password123"
-}
