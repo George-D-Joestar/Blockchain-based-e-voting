@@ -13,7 +13,7 @@ console.log("============================\n");
 const testConnection = async () => {
   try {
     console.log("🔄 Attempting to connect to MySQL...\n");
-    
+
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
@@ -38,7 +38,7 @@ const testConnection = async () => {
     console.error("Error Code:", err.code);
     console.error("Error Message:", err.message);
     console.error("\nFull Error:", err);
-    
+
     // Suggest solutions based on error
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
       console.error("\n💡 Solution: MySQL server is down or host unreachable");
@@ -49,7 +49,7 @@ const testConnection = async () => {
     } else if (err.code === "ENOTFOUND") {
       console.error("\n💡 Solution: Host is unreachable (wrong IP or offline)");
     }
-    
+
     process.exit(1);
   }
 };
